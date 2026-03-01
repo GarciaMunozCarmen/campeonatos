@@ -15,8 +15,13 @@ public class CampeonatoService {
     ResultadoRepository resultadoRepo;
     DeportistaRepository deportistaRepo;
 
+    public CampeonatoService(ResultadoRepository resultadoRepo, DeportistaRepository deportistaRepo) {
+        this.resultadoRepo = resultadoRepo;
+        this.deportistaRepo = deportistaRepo;
+    }
+
     public void registrarDeportista(Deportista d){
-        if(d == null || d.getPais().isEmpty() || d.getId() == null || d.getNombre() == null || d.getPais() == null || d.getNombre().isEmpty() || d.getId().isEmpty()){
+        if(d == null || d.getPais() == null|| d.getId() == null || d.getNombre() == null || d.getPais().isEmpty() || d.getNombre().isEmpty() || d.getId().isEmpty()){
             throw new IllegalArgumentException("EL deportista no puede ser nulo ni tener ningún valor nulo");
         } else if (deportistaRepo.findById(d.getId()).isPresent()) {
             throw new DuplicadoException();
