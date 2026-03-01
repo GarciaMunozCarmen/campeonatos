@@ -8,6 +8,14 @@ public class Resultado implements Puntuable {
     private String idDeportista;
     private int posicion;
 
+    public Resultado(String id, String idPrueba, TipoPrueba tipoPrueba, String idDeportista, int posicion) {
+        this.id = id;
+        this.idPrueba = idPrueba;
+        this.tipoPrueba = tipoPrueba;
+        this.idDeportista = idDeportista;
+        this.posicion = posicion;
+    }
+
     @Override
     public int getPuntos() {
         if(posicion == 1){
@@ -19,6 +27,17 @@ public class Resultado implements Puntuable {
         }else{
             return 0;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Resultado{" +
+                "id='" + id + '\'' +
+                ", idPrueba='" + idPrueba + '\'' +
+                ", tipoPrueba=" + tipoPrueba +
+                ", idDeportista='" + idDeportista + '\'' +
+                ", posicion=" + posicion +
+                '}';
     }
 
     public String getId() {
