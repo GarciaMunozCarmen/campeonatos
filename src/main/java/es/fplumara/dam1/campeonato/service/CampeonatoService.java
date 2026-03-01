@@ -37,7 +37,7 @@ public class CampeonatoService {
             throw new IllegalArgumentException("El tipo de prueba no puede ser nulo");
         } else if (r.getPosicion() <= 0) {
             throw new IllegalArgumentException("La posición no puede ser menor o igual a 0");
-        } else if (resultadoRepo.listAll().contains(r)) {
+        } else if (resultadoRepo.findById(r.getId()).isPresent()) {
             throw new DuplicadoException();
         }else if(deportistaRepo.findById(r.getIdDeportista()).isEmpty()){
             throw new NoEncontradoException();
